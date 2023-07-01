@@ -4,6 +4,12 @@ const BN = require("bn.js");
 
 const MintingTool = (props) => {
   const formRef = useRef(null);
+  //   const showNFTs = async () => {
+  //     const nfts = await window.contract.nft_tokens_for_owner({
+  //       account_id: window.accountId,
+  //     });
+  //     console.log(nfts);
+  //   };
   const mintNFT = async () => {
     console.log(formRef.current.children["token-name"].value);
     await window.contract.nft_mint(

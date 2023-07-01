@@ -11,7 +11,7 @@ import getConfig from "./config";
 const { networkId } = getConfig(process.env.NODE_ENV || "development");
 
 export default function App() {
-  const [userHasNFT, setuserHasNFT] = useState(false);
+  const [nfts, setNfts] = useState([]);
 
   // useEffect(() => {
   //   const receivedNFT = async () => {
@@ -36,7 +36,17 @@ export default function App() {
   //   };
   //   receivedNFT();
   // }, []);
-  useEffect(() => {}, []);
+
+  useEffect(() => {
+    const getNfts = async () => {
+      setNfts(
+        await window.contract.nft_tokens_for_owner({
+          account_id: window.accountId,
+        })
+      );
+    };
+    getNfts();
+  }, []);
 
   const checkNFT = async () => {
     console.log(window.walletConnection.getAccountId());
@@ -47,15 +57,25 @@ export default function App() {
     console.log(nft);
   };
 
+  console.log(nfts);
+
   return (
     <div>
-      <button
+      <h1>Your NFTs</h1>
+      {nfts.map((nft, index) => {
+        return (
+          <div key={index}>
+            <img src={nft.metadata.media} alt="nft-pic" />
+          </div>
+        );
+      })}
+      {/* <button
         onClick={() => {
           checkNFT();
         }}
       >
-        Click me
-      </button>
+        TEST: log nfts
+      </button> */}
       <MintingTool />
     </div>
   );
