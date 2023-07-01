@@ -39,11 +39,13 @@ export default function App() {
 
   useEffect(() => {
     const getNfts = async () => {
-      setNfts(
-        await window.contract.nft_tokens_for_owner({
-          account_id: window.accountId,
-        })
-      );
+      if (window.accountId) {
+        setNfts(
+          await window.contract.nft_tokens_for_owner({
+            account_id: window.accountId,
+          })
+        );
+      }
     };
     getNfts();
   }, []);
