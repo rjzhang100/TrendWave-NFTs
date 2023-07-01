@@ -10,7 +10,6 @@ import { Nav, Navbar, Container, Row, Card, Alert } from "react-bootstrap";
 
 // Custom Components
 import MintingTool from "./Components/MintingTool";
-import InfoBubble from "./Components/InfoBubble";
 
 // asse
 
