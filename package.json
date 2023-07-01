@@ -16,5 +16,7 @@
   "devDependencies": {
     "near-cli": "^3.3.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "react-bootstrap": "^2.8.0"
+  }
 }

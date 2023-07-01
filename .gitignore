@@ -33,3 +33,4 @@ contract/neardev/
 contract/target
 frontend/.parcel-cache
 frontend/dist
+integration-tests/target/

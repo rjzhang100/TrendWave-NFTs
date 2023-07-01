@@ -29,9 +29,6 @@ main {
   max-width: 26em;
 }
 
-main.please-wait {
-}
-
 h1 {
   background-image: url(./logo-black.svg);
   background-position: center 1em;
@@ -174,9 +171,7 @@ li {
     --shadow: #2a2a2a;
     --light-gray: #444;
   }
-  h1 {
-    background-image: url(./logo-white.svg);
-  }
+
   input:focus {
     box-shadow: 0 0 10em rgba(255, 255, 255, 0.02) inset;
   }
