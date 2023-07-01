@@ -32,3 +32,4 @@ yarn-error.log*
 contract/neardev/
 contract/target
 frontend/.parcel-cache
+frontend/dist
