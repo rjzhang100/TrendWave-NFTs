@@ -1,21 +1,22 @@
-import React from "react";
+import React, { useRef } from "react";
 import { login, logout } from "../utils";
 const BN = require("bn.js");
 
 const MintingTool = (props) => {
+  const formRef = useRef(null);
   const mintNFT = async () => {
+    console.log(formRef.current.children["token-name"].value);
     await window.contract.nft_mint(
       {
-        token_id: `trendwave-2`,
+        token_id: formRef.current.children["token-name"].value,
         metadata: {
-          title: "testing token 2",
-          description: "testing token 2",
-          media:
-            "https://media0.giphy.com/media/TslhOkvop5fIbTevw7/200w.webp?cid=bb5a1c3aumlwztnfqawn78itktknq7x0r74aeafwcac10ikk&ep=v1_gifs_trending&rid=200w.webp&ct=g",
+          title: formRef.current.children["token-name"].value,
+          description: formRef.current.children["description"].value,
+          media: formRef.current.children["media"].value,
         },
         receiver_id: window.accountId,
       },
-      3000000000000,
+      30000000000000,
       new BN("1000000000000000000000000")
     );
   };
@@ -28,6 +29,20 @@ const MintingTool = (props) => {
       >
         {window.walletConnection.isSignedIn() ? window.accountId : "Login"}
       </button>
+      <form
+        style={{
+          display: "flex",
+          flexDirection: "column",
+        }}
+        ref={formRef}
+      >
+        <label>token name</label>
+        <input id="token-name" />
+        <label>token description</label>
+        <input id="description" />
+        <label>token media</label>
+        <input id="media" />
+      </form>
       <button onClick={() => mintNFT()}>Minting Tool</button>
     </div>
   );
