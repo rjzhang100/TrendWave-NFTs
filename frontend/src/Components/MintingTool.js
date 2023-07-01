@@ -1,7 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { Form, Button, Card, Container, Row, Alert } from "react-bootstrap";
-import { keys } from "regenerator-runtime";
 import { login, logout } from "../utils";
 const BN = require("bn.js");
 

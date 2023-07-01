@@ -36,9 +36,26 @@ export default function App() {
   //   };
   //   receivedNFT();
   // }, []);
+  useEffect(() => {}, []);
+
+  const checkNFT = async () => {
+    console.log(window.walletConnection.getAccountId());
+    // not sure why its not working
+    const nft = await window.contract.nft_tokens_for_owner({
+      account_id: window.accountId,
+    });
+    console.log(nft);
+  };
 
   return (
     <div>
+      <button
+        onClick={() => {
+          checkNFT();
+        }}
+      >
+        Click me
+      </button>
       <MintingTool />
     </div>
   );
