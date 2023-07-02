@@ -32,6 +32,12 @@ const Card = ({ prompt }) => {
 		return new File([content], 'image.png', { type });
 	};
 
+	const formatIPFS = (ipfs) => {
+		const removePrefix = ipfs.replace("ipfs://", "");
+		const removeSuffix = removePrefix.replace("/image.png", "");
+		return "https://" + removeSuffix + ".ipfs.dweb.link/image.png";
+	}
+
 	const storeNFT = async (image, name, description) => {
 
 		// create a new NFTStorage client using our API key
@@ -50,15 +56,16 @@ const Card = ({ prompt }) => {
 		console.log(image);
 		const res = await storeNFT(image, tokenId, description);
 		const ipfs = res.data.image.href;
-		console.log(ipfs)
-		return
+		const formattedIPFS = formatIPFS(ipfs);
+		console.log(formattedIPFS);
+		// return
 		await window.contract.nft_mint(
 			{
 				token_id: tokenId,
 				metadata: {
 					title: tokenId,
 					description: description,
-					media: ipfs,
+					media: formattedIPFS,
 				},
 				receiver_id: window.accountId,
 			},
