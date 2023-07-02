@@ -15,30 +15,6 @@ const { networkId } = getConfig(process.env.NODE_ENV || "development");
 export default function App() {
   const [nfts, setNfts] = useState([]);
 
-  // useEffect(() => {
-  //   const receivedNFT = async () => {
-  //     console.log(
-  //       await window.contract.check_token({
-  //         id: `${window.accountId}-go-team-token`,
-  //       })
-  //     );
-  //     if (window.accountId !== "") {
-  //       console.log(
-  //         await window.contract.check_token({
-  //           id: `${window.accountId}-go-team-token`,
-  //         })
-  //       );
-
-  //       setuserHasNFT(
-  //         await window.contract.check_token({
-  //           id: `${window.accountId}-go-team-token`,
-  //         })
-  //       );
-  //     }
-  //   };
-  //   receivedNFT();
-  // }, []);
-
   useEffect(() => {
     const getNfts = async () => {
       if (window.accountId) {
@@ -65,6 +41,37 @@ export default function App() {
 
   return (
     <div>
+      <div
+        style={{
+          position: "absolute",
+          top: "0",
+          left: "0",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "flex-end",
+          flexDirection: "row",
+          width: "100vw",
+          height: "75px",
+          backgroundColor: "grey",
+        }}
+      >
+        <div
+          style={{
+            marginRight: "auto",
+            marginLeft: "25px",
+            fontSize: "30px",
+            fontWeight: "bold",
+          }}
+        >
+          TrendWave NFT
+        </div>
+        <button
+          style={{ width: "150px", marginRight: "25px" }}
+          onClick={window.walletConnection.isSignedIn() ? logout : login}
+        >
+          {window.walletConnection.isSignedIn() ? window.accountId : "Login"}
+        </button>
+      </div>
       <ImageGallery nfts={nfts} />
       {/* <h1>Your NFTs</h1>
       {nfts.map((nft, index) => {

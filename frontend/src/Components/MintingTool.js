@@ -29,12 +29,6 @@ const MintingTool = (props) => {
 
   return (
     <div>
-      <button
-        style={{ width: "50vw" }}
-        onClick={window.walletConnection.isSignedIn() ? logout : login}
-      >
-        {window.walletConnection.isSignedIn() ? window.accountId : "Login"}
-      </button>
       <form
         style={{
           display: "flex",
