@@ -53,6 +53,7 @@ export default function App() {
           width: "100vw",
           height: "75px",
           backgroundColor: "grey",
+          zIndex: "12312",
         }}
       >
         <div
@@ -72,8 +73,72 @@ export default function App() {
           {window.walletConnection.isSignedIn() ? window.accountId : "Login"}
         </button>
       </div>
-      <ImageGallery nfts={nfts} />
-      {/* <h1>Your NFTs</h1>
+      {window.innerWidth > 600 && (
+        <div
+          style={{
+            backgroundColor: "lightgrey",
+            position: "absolute",
+            left: "0",
+            height: "100%",
+            width: "150px",
+            paddingTop: "85px",
+            color: "black",
+            display: "flex",
+            flexDirection: "column",
+            gap: "15px",
+          }}
+        >
+          <div style={{ marginTop: "15px" }}>
+            <div style={{ marginBottom: "10px" }}>Sort NFTs by Category</div>
+            <div
+              style={{
+                width: "100%",
+                height: "25px",
+                backgroundColor: "white",
+                color: "black",
+                textAlign: "center",
+              }}
+            >
+              Funny
+            </div>
+          </div>
+          <div>
+            <div>Sort NFTs by Price</div>
+            <div
+              style={{
+                width: "100%",
+                height: "25px",
+                backgroundColor: "white",
+                color: "black",
+                textAlign: "center",
+              }}
+            >
+              Lowest to Highest
+            </div>
+          </div>
+          <div>
+            Get Trendy NFT For:
+            <div
+              style={{
+                width: "100%",
+                height: "25px",
+                backgroundColor: "white",
+                color: "black",
+                textAlign: "center",
+              }}
+            >
+              July 2 2023
+            </div>
+          </div>
+        </div>
+      )}
+      <div
+        style={{
+          paddingLeft: window.innerWidth > 600 ? "150px" : "0px",
+        }}
+      >
+        <ImageGallery nfts={nfts} />
+        {/* <h1>Your NFTs</h1>
       {nfts.map((nft, index) => {
         return (
           <div key={index}>
@@ -81,14 +146,15 @@ export default function App() {
           </div>
         );
       })} */}
-      {/* <button
+        {/* <button
         onClick={() => {
           checkNFT();
         }}
       >
         TEST: log nfts
       </button> */}
-      <MintingTool />
+        <MintingTool />
+      </div>
     </div>
   );
 }
