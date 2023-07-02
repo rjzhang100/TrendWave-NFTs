@@ -5,6 +5,7 @@ import "./App.css";
 
 // Custom Components
 import MintingTool from "./Components/MintingTool";
+import TrendMintingTool from "./Components/TrendMintingTool";
 
 // asse
 
@@ -13,7 +14,8 @@ import ImageGallery from "./Components/ImageGallery/ImageGallery";
 const { networkId } = getConfig(process.env.NODE_ENV || "development");
 
 // adminAccountID = "raminkahidi.testnet";
-adminAccountID = "jasonydzhao.testnet";
+// adminAccountID = "jasonydzhao.testnet";
+adminAccountID = "lejin.testnet";
 
 export default function App() {
   const [nfts, setNfts] = useState([]);
@@ -156,7 +158,8 @@ export default function App() {
       >
         TEST: log nfts
       </button> */}
-        {adminAccountID === window.accountId ? <MintingTool /> : <></>}
+        {/* {adminAccountID === window.accountId ? <MintingTool /> : <></>} */}
+		{adminAccountID === window.accountId ? <TrendMintingTool /> : <></>}
       </div>
     </div>
   );
