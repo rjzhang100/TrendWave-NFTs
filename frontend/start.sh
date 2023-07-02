@@ -19,6 +19,8 @@ alert () {
   echo "======================================================"
 }
 
-
-start
-
+if [ -f "$DEV_ACCOUNT_FILE" ]; then
+  start
+else
+  alert
+fi
