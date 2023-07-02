@@ -12,6 +12,9 @@ import getConfig from "./config";
 import ImageGallery from "./Components/ImageGallery/ImageGallery";
 const { networkId } = getConfig(process.env.NODE_ENV || "development");
 
+// adminAccountID = "raminkahidi.testnet";
+adminAccountID = "jasonydzhao.testnet";
+
 export default function App() {
   const [nfts, setNfts] = useState([]);
 
@@ -20,7 +23,7 @@ export default function App() {
       if (window.accountId) {
         setNfts(
           await window.contract.nft_tokens_for_owner({
-            account_id: window.accountId,
+            account_id: adminAccountID,
           })
         );
       }
@@ -153,7 +156,7 @@ export default function App() {
       >
         TEST: log nfts
       </button> */}
-        <MintingTool />
+        {adminAccountID === window.accountId ? <MintingTool /> : <></>}
       </div>
     </div>
   );

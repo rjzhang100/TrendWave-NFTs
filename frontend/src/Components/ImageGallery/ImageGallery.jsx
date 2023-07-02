@@ -2,6 +2,7 @@ import React from "react";
 import "./ImageGallery.css";
 
 const Photo = ({ src, alt, description }) => {
+  console.log("description", description);
   return (
     <>
       <div className="image-container">
@@ -20,14 +21,19 @@ function ImageGallery({ nfts }) {
         {/* {photos.map((photo, index) => (
           <Photo key={index} src={photo.src} alt={photo.alt} />
         ))} */}
-        {nfts.map((nft, index) => (
-          <Photo
-            key={index}
-            src={nft.metadata.media}
-            description={nft.metadata.description}
-            alt="nft-pic"
-          />
-        ))}
+        {nfts.map((nft, index) =>
+          nft.metadata.description === "doggy" ||
+          nft.metadata.description === "Doggy" ? (
+            <></>
+          ) : (
+            <Photo
+              key={index}
+              src={nft.metadata.media}
+              description={nft.metadata.description}
+              alt="nft-pic"
+            />
+          )
+        )}
       </div>
     </div>
   );
