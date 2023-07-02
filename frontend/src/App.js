@@ -1,6 +1,7 @@
 import "regenerator-runtime/runtime";
 import React, { useEffect, useState } from "react";
 import { login, logout } from "./utils";
+import "./App.css";
 
 // Custom Components
 import MintingTool from "./Components/MintingTool";
@@ -8,6 +9,7 @@ import MintingTool from "./Components/MintingTool";
 // asse
 
 import getConfig from "./config";
+import ImageGallery from "./Components/ImageGallery/ImageGallery";
 const { networkId } = getConfig(process.env.NODE_ENV || "development");
 
 export default function App() {
@@ -63,14 +65,15 @@ export default function App() {
 
   return (
     <div>
-      <h1>Your NFTs</h1>
+      <ImageGallery nfts={nfts} />
+      {/* <h1>Your NFTs</h1>
       {nfts.map((nft, index) => {
         return (
           <div key={index}>
             <img src={nft.metadata.media} alt="nft-pic" />
           </div>
         );
-      })}
+      })} */}
       {/* <button
         onClick={() => {
           checkNFT();

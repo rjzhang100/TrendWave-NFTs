@@ -23,6 +23,9 @@ html {
 body {
   margin: 0;
   padding: 1em;
+  background-color: #141414;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
 }
 
 main {
